@@ -1,2 +1,2 @@
 # layers
-testing lambda_layers dependencies
+testing lambda layer dependencies
