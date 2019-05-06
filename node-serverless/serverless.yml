@@ -1,0 +1,27 @@
+service: node-serverless # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+layers:
+  dynatrace:
+    compatibleRuntimes:
+      - nodejs8.10
+    name: dynatrace
+    path: layer
+    description: Add dynatrace instrumentation
+    environment:
+      DT_LAMBDA_OPTIONS: ${ssm:/DT_LAMBDA_OPTIONS}
+    licenseInfo: GPLv3
+    retain: false
+functions:
+  hello:
+    handler: handler.hello
+    path: function
+    events:
+      - http:
+          path: /hello
+          method: get
+    layers:
+      - {Ref: DynatraceLambdaLayer}

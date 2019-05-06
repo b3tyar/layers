@@ -1,0 +1,24 @@
+service: python-serverless
+
+provider:
+  name: aws
+  runtime: python3.7
+
+layers:
+  pythonlayer:
+    compatibleRuntimes:
+      - python3.7
+    name: pythonlayer
+    path: layer
+    description: pythonlayer 
+    licenseInfo: GPLv3
+    retain: false
+functions:
+  hello:
+    handler: custom_func.cust_fun
+    events:
+      - http:
+          path: /hello
+          method: get
+    layers:
+      - {Ref: PythonlayerLambdaLayer}
