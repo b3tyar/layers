@@ -4,7 +4,7 @@
   "description": "",
   "main": "handler.js",
   "dependencies": {
-    "@dynatrace/oneagent": "^1.165.238-1.0.0"
+    "@dynatrace/oneagent": "^1.265.152-1.0.0"
   },
   "devDependencies": {},
   "scripts": {
